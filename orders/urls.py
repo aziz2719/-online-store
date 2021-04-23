@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import OrderView, OrderProductView
+from .views import OrderView
+from rest_framework import routers
 
-urlpatterns = [
-    path('', OrderView.as_view({'get': 'list', 'post': 'create'})),
-    path('', OrderProductView.as_view({'get': 'list', 'post': 'create'}))
-]
+
+router = routers.DefaultRouter()
+router.register('', OrderView)
+
+urlpatterns = []
+urlpatterns += router.urls

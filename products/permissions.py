@@ -15,5 +15,4 @@ class IsCommentsOwnerOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         elif request.method == 'DELETE':
-            return obj.user == request.user or obj.products.user == request.user
-        return obj.user == request.user
+            return obj.user == request.user or request.user.is_staff or request.user.is_superuser

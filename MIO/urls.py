@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 from users.views import ProfileRegisterView, ProfileLoginView, CourierRegisterView
-
 from categories.views import CategoriesView
 
 from django.conf import settings
@@ -29,8 +28,7 @@ urlpatterns = [
     path('profile/register', ProfileRegisterView.as_view()),
     path('profile/login', ProfileLoginView.as_view()),
     path('courier/register', CourierRegisterView.as_view()),
-    path('order/', include('orders.urls')),
-    path('order_product/', include('orders.urls')),
+    path('orders/', include('orders.urls')),
     path('categories/', include('categories.urls')),
     path('products/', include('products.urls')),
 ]

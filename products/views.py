@@ -14,11 +14,13 @@ from .service import ProductFilter
 
 
 class ProductsView(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.prefetch_related('created_at', 'product_marks', 'user_marks')
     serializer_class = ProductSerializer
     permission_classes = (IsProductUserOrReadOnly, )
     filter_backends = (DjangoFilterBackend, )
     filter_class = ProductFilter
+
+
 
 class ProductMarkView(ModelViewSet):
     queryset = ProductMark.objects.all()

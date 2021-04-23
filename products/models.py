@@ -6,7 +6,7 @@ class Product(models.Model):
     text = models.TextField('Текст')
     price = models.DecimalField('Цена', max_digits=10, decimal_places=0)
     category = models.ForeignKey('categories.Category', models.CASCADE, related_name='stuff_category', null=True)
-    raiting = models.PositiveSmallIntegerField('Рейтинг', default=0, null=True)
+    rating = models.PositiveSmallIntegerField('Рейтинг', default=0, null=True)
 
     def __str__(self):
         return self.name
