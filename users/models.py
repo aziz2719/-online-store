@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, 'user_profile')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, models.CASCADE, related_name='profile', null=True)
     first_name = models.CharField('Имя', max_length=255, blank=True, null=True)
     last_name = models.CharField('Фамилия', max_length=255, blank=True, null=True)
     dob = models.DateField('Дата рождения', blank=True, null=True)
@@ -22,7 +22,7 @@ class Profile(models.Model):
 
 
 class Stuff(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, 'user_stuff')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, models.CASCADE, related_name='stuff', null=True)
     first_name = models.CharField('Имя', max_length=255, blank=True, null=True)
     last_name = models.CharField('Фамилия', max_length=255, blank=True, null=True)
 
@@ -35,7 +35,7 @@ class Stuff(models.Model):
 
 
 class Courier(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, 'user_courier')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, models.CASCADE, related_name='courier', null=True)
     first_name = models.CharField('Имя', max_length=255, blank=True, null=True)
     last_name = models.CharField('Фамилия', max_length=255, blank=True, null=True)
     car = models.TextField('Описание машины', blank=True, null=True)

@@ -22,10 +22,11 @@ class ProductSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(read_only=True, format='%d.%m.%Y %H:%M')
     product_marks = ProductMarkSerializer(read_only=True, many=True)
     user_marks = ProductMarkSerializer(many=True)
+    product_image = ProductImagesSerializer(read_only=True, many=True)
     class Meta:
         model = Product
         fields = (
-            'id', 'name', 'text', 'price', 'category', 'country', 
-            'manufacturer', 'raiting', 'created_at', 'product_marks', 'user_marks'
+            'id', 'name', 'text', 'price', 'category',
+            'rating', 'created_at', 'product_marks', 'user_marks', 'product_image',
         )
 

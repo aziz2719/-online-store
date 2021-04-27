@@ -23,8 +23,16 @@ class Order(models.Model):
         self.total_price = self.prodect_order_product.all().aggregate(total_price=Sum(F('good_quantity') * F('product__price')))['total_price']
         self.save()
 
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+
 
 class OrderProduct(models.Model):
     product = models.ForeignKey(Product, models.SET_NULL, null=True)
     order = models.ForeignKey(Order, models.CASCADE, 'prodect_order_product', null=True)
     good_quantity = models.PositiveSmallIntegerField('Количество товара', default=1) 
+
+    class Meta:
+        verbose_name = 'Заказ продукта'
+        verbose_name_plural = 'Заказ продуктов'
